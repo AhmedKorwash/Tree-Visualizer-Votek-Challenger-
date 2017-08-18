@@ -1,0 +1,47 @@
+﻿@model List<VotekChallengeWeb.Models.TreeModels>
+
+@{
+    ViewBag.Title = "Tree";
+}
+
+<h2>Tree Visualizer</h2>
+<h2>@ViewBag.TreeTitle</h2>
+
+<div class="form-horizontal">
+    <hr />
+    @*Start Upload Json File Section*@
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Upload File</h2>
+            <p>
+                Do you have a Json File, you can Visualize it here.
+            </p>
+            
+            <form action="/Home/Tree" method="post" enctype="multipart/form-data">
+                <input class="btn btn-info" type="file" id="selectFiles" name="selectFiles" value="Import" /><br />
+                <button type="submit" class="btn btn-primary" id="import">Import</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Try Randme</h2>
+            <p>If you dont have a JSON File you can use one of samples to see it working fine.</p>
+            <p><a class="btn btn-primary" href="/Home/Sample">Lets go &raquo;</a></p>
+        </div>
+
+    </div>
+    @*Start Upload Json File Section*@
+
+    <hr />
+
+  @{ Html.RenderPartial("_RenderTreeSection", Model);  }
+
+
+</div>
+
+<div>
+    @Html.ActionLink("Back to Home", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

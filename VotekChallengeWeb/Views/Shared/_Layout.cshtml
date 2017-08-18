@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Visualizer - Votek Challenge</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Tree Visualizer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Tree Visualizer</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $("#Save").on("click", function (event) {
+            event.preventDefault();
+            html2canvas(document.body, {
+                allowTaint: true,
+                taintTest: false,
+                // This is Pictuer of Tree [Canvas]
+                onrendered: function (canvas) {
+                    //Get src for it StringBase64
+                    var url = "/Home/SaveTree";
+                    var model = $("#HiddenModel").val();
+
+                    $.post(url, {
+                        image: canvas.toDataURL(),
+                        model: model
+                    }, function (data) {
+
+                    });
+                }
+            });
+        });
+        function saveFile (name, type, data) {
+            if (data != null && navigator.msSaveBlob)
+                return navigator.msSaveBlob(new Blob([data], { type: type }), name);
+            var a = $("<a style='display: none;'/>");
+            var url = window.URL.createObjectURL(new Blob([data], {type: type}));
+            a.attr("href", url);
+            a.attr("download", name);
+            $("body").append(a);
+            a[0].click();
+            window.URL.revokeObjectURL(url);
+            a.remove();
+        }
+        $("#Export").on("click", function (event) {
+            var textbox_text = $("#HiddenModel").val();
+            if (window.location.href.split("ID=")[1] != null) {
+                saveFile(window.location.href.split("ID=")[1] + ".json", "data:attachment/text", textbox_text);
+            }
+            else {
+                saveFile(new Date().toLocaleString() + ".json", "data:attachment/text", textbox_text);
+            }
+        });
+    </script>
+</body>
+</html>

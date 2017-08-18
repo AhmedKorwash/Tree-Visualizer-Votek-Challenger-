@@ -1,0 +1,28 @@
+﻿@model List<VotekChallengeWeb.Models.TreeModels>
+
+@{
+    ViewBag.Title = "ViewTree";
+}
+
+<h2>Tree Visualizer</h2>
+<h2>@ViewBag.TreeTitle</h2>
+
+<div class="form-horizontal">
+    <hr />
+
+    @{ Html.RenderPartial("_RenderTreeSection", Model);  }
+
+
+</div>
+
+<div>
+    @Html.ActionLink("Back to Home", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

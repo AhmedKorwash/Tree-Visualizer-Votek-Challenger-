@@ -1,0 +1,76 @@
+{
+  "tree_title":"tree -1",
+  "tree_nodes":[
+    {
+      "id":"N1",
+      "title":"NODE-1",
+      "previous_sibling_id":"",
+      "next_node_id":"N11"
+    },
+    {
+      "id":"N2",
+      "title":"NODE-2",
+      "previous_sibling_id":"N1",
+      "next_node_id":"N21"
+    },
+    {
+      "id":"N3",
+      "title":"NODE-3",
+      "previous_sibling_id":"N2",
+      "next_node_id":""
+    },
+    {
+      "id":"N4",
+      "title":"NODE-4",
+      "previous_sibling_id":"N3",
+      "next_node_id":"N41"
+    },
+ 
+    {
+      "id":"N11",
+      "title":"NODE-1-1",
+      "previous_sibling_id":"",
+      "next_node_id":""
+    },
+    {
+      "id":"N12",
+      "title":"NODE-1-2",
+      "previous_sibling_id":"N11",
+      "next_node_id":"N121"
+    },
+ 
+    {
+      "id":"N121",
+      "title":"NODE-1-2-1",
+      "previous_sibling_id":"",
+      "next_node_id":""
+    },
+    {
+      "id":"N122",
+      "title":"NODE-1-2-2",
+      "previous_sibling_id":"N121",
+      "next_node_id":""
+    },
+ 
+    {
+      "id":"N21",
+      "title":"NODE-2-1",
+      "previous_sibling_id":"",
+      "next_node_id":""
+    },
+ 
+    {
+      "id":"N41",
+      "title":"NODE-4-12",
+      "previous_sibling_id":"N42",
+      "next_node_id":""
+    },
+    {
+      "id":"N42",
+      "title":"NODE-4-2",
+      "previous_sibling_id":"N41",
+      "next_node_id":""
+    }
+ 
+  ]
+}

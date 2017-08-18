@@ -1,0 +1,19 @@
+﻿@model Dictionary<string, Dictionary<string, string>>
+@{
+    ViewBag.Title = "PreviousSample";
+}
+<div class="row">
+    <h2>Select one of this</h2>
+    <hr />
+    <div class="row">
+        @{
+            foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <a href="/Home/ViewTree?ID=@item.Key"><img class="img-responsive" src="@File.ReadAllText(@item.Value["Image"])" /></a>
+                </div>
+            }
+        }
+
+    </div>
+</div>
